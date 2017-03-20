@@ -4,10 +4,10 @@ import { createStore } from 'redux';
 
 import App from './App';
 
-function reducer(state = 0, action) {
+function reducer(state = '', action) {
 	switch (action.type) {
 		case 'DIGIT':
-			return action.value;
+			return state + action.value;
 		default:
 		 return state;
 	}

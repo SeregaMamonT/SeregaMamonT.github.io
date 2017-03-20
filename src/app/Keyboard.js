@@ -12,19 +12,17 @@ class Keyboard extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<table>
-					<tbody>
-						{
-							Keyboard.BUTTON_LAYOUT.map(buttonRow => (
-								<tr>
-									{ buttonRow.map(buttonModel => <td>{this.createButton(buttonModel)}</td>) }
-								</tr>
-							))
-						}
-					</tbody>
-				</table>
-			</div>
+			<table>
+				<tbody>
+					{
+						Keyboard.BUTTON_LAYOUT.map(buttonRow => (
+							<tr>
+								{ buttonRow.map(buttonModel => <td>{this.createButton(buttonModel)}</td>) }
+							</tr>
+						))
+					}
+				</tbody>
+			</table>
 		);
 	}
 }
