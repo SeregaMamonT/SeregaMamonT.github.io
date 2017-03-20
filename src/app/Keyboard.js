@@ -5,7 +5,8 @@ import Button from './Button';
 class Keyboard extends React.Component {
 
 	createButton(buttonModel) {
-		let actionHandler = buttonModel.action ? () => this.context.store.dispatch(buttonModel.action) : undefined;
+        const { store } = this.context;
+        let actionHandler = buttonModel.action ? () => store.dispatch(buttonModel.action) : undefined;
 		return <Button text={buttonModel.text} action={actionHandler}/>
 	}
 
@@ -29,7 +30,7 @@ class Keyboard extends React.Component {
 
 Keyboard.contextTypes = {
 	store: React.PropTypes.object
-}
+};
 
 
 Keyboard.BTN_MODEL_ZERO = 		{ text: '0', action: { type: 'DIGIT', value: 0 } };
