@@ -61,11 +61,11 @@
 	
 	var _reactRedux = __webpack_require__(/*! react-redux */ 199);
 	
-	var _reducers = __webpack_require__(/*! ./reducers */ 235);
+	var _reducers = __webpack_require__(/*! ./reducers */ 216);
 	
 	var _reducers2 = _interopRequireDefault(_reducers);
 	
-	var _App = __webpack_require__(/*! ./App */ 236);
+	var _App = __webpack_require__(/*! ./App */ 217);
 	
 	var _App2 = _interopRequireDefault(_App);
 	
@@ -24415,26 +24415,7 @@
 	}
 
 /***/ },
-/* 216 */,
-/* 217 */,
-/* 218 */,
-/* 219 */,
-/* 220 */,
-/* 221 */,
-/* 222 */,
-/* 223 */,
-/* 224 */,
-/* 225 */,
-/* 226 */,
-/* 227 */,
-/* 228 */,
-/* 229 */,
-/* 230 */,
-/* 231 */,
-/* 232 */,
-/* 233 */,
-/* 234 */,
-/* 235 */
+/* 216 */
 /*!*****************************!*\
   !*** ./src/app/reducers.js ***!
   \*****************************/
@@ -24446,6 +24427,20 @@
 	    value: true
 	});
 	function reducer() {
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	    var action = arguments[1];
+	
+	    switch (action.type) {
+	        case 'DIGIT':
+	            return Object.assign({}, state, {
+	                display: display(state.display, action)
+	            });
+	        default:
+	            return state;
+	    }
+	}
+	
+	function display() {
 	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 	    var action = arguments[1];
 	
@@ -24460,7 +24455,7 @@
 	exports.default = reducer;
 
 /***/ },
-/* 236 */
+/* 217 */
 /*!************************!*\
   !*** ./src/app/App.js ***!
   \************************/
@@ -24478,11 +24473,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Display = __webpack_require__(/*! ./Display */ 237);
+	var _Display = __webpack_require__(/*! ./Display */ 218);
 	
 	var _Display2 = _interopRequireDefault(_Display);
 	
-	var _Keyboard = __webpack_require__(/*! ./Keyboard */ 238);
+	var _Keyboard = __webpack_require__(/*! ./Keyboard */ 219);
 	
 	var _Keyboard2 = _interopRequireDefault(_Keyboard);
 	
@@ -24521,7 +24516,7 @@
 	exports.default = App;
 
 /***/ },
-/* 237 */
+/* 218 */
 /*!****************************!*\
   !*** ./src/app/Display.js ***!
   \****************************/
@@ -24577,7 +24572,7 @@
 	        value: function render() {
 	            var store = this.context.store;
 	
-	            return _react2.default.createElement("input", { type: "text", value: store.getState(), readOnly: true });
+	            return _react2.default.createElement("input", { type: "text", value: store.getState().display, readOnly: true });
 	        }
 	    }]);
 	
@@ -24591,7 +24586,7 @@
 	exports.default = Display;
 
 /***/ },
-/* 238 */
+/* 219 */
 /*!*****************************!*\
   !*** ./src/app/Keyboard.js ***!
   \*****************************/
@@ -24609,7 +24604,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Button = __webpack_require__(/*! ./Button */ 239);
+	var _Button = __webpack_require__(/*! ./Button */ 220);
 	
 	var _Button2 = _interopRequireDefault(_Button);
 	
@@ -24687,14 +24682,20 @@
 	Keyboard.BTN_MODEL_EIGHT = { text: '8', action: { type: 'DIGIT', value: 8 } };
 	Keyboard.BTN_MODEL_NINE = { text: '9', action: { type: 'DIGIT', value: 9 } };
 	Keyboard.BTN_MODEL_DECIMAL = { text: ',', action: { type: 'DECIMAL' } };
+	Keyboard.BTN_MODEL_SUM = { text: '+', action: { type: 'OPERATION', value: '+' } };
+	Keyboard.BTN_MODEL_SUB = { text: '-', action: { type: 'OPERATION', value: '-' } };
+	Keyboard.BTN_MODEL_DIV = { text: '/', action: { type: 'OPERATION', value: '/' } };
+	Keyboard.BTN_MODEL_MULT = { text: '*', action: { type: 'OPERATION', value: '*' } };
+	Keyboard.BTN_MODEL_RESULT = { text: '=', action: { type: 'OPERATION', value: '=' } };
+	
 	Keyboard.BTN_MODEL_NONE = { text: '' };
 	
-	Keyboard.BUTTON_LAYOUT = [[Keyboard.BTN_MODEL_ONE, Keyboard.BTN_MODEL_TWO, Keyboard.BTN_MODEL_THREE], [Keyboard.BTN_MODEL_FOUR, Keyboard.BTN_MODEL_FIVE, Keyboard.BTN_MODEL_SIX], [Keyboard.BTN_MODEL_SEVEN, Keyboard.BTN_MODEL_EIGHT, Keyboard.BTN_MODEL_NINE], [Keyboard.BTN_MODEL_NONE, Keyboard.BTN_MODEL_ZERO, Keyboard.BTN_MODEL_DECIMAL]];
+	Keyboard.BUTTON_LAYOUT = [[Keyboard.BTN_MODEL_ONE, Keyboard.BTN_MODEL_TWO, Keyboard.BTN_MODEL_THREE, Keyboard.BTN_MODEL_SUM], [Keyboard.BTN_MODEL_FOUR, Keyboard.BTN_MODEL_FIVE, Keyboard.BTN_MODEL_SIX, Keyboard.BTN_MODEL_SUB], [Keyboard.BTN_MODEL_SEVEN, Keyboard.BTN_MODEL_EIGHT, Keyboard.BTN_MODEL_NINE, Keyboard.BTN_MODEL_MULT], [Keyboard.BTN_MODEL_DECIMAL, Keyboard.BTN_MODEL_ZERO, Keyboard.BTN_MODEL_RESULT, Keyboard.BTN_MODEL_DIV]];
 	
 	exports.default = Keyboard;
 
 /***/ },
-/* 239 */
+/* 220 */
 /*!***************************!*\
   !*** ./src/app/Button.js ***!
   \***************************/

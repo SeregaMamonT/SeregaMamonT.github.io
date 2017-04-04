@@ -15,7 +15,7 @@ class Display extends React.Component {
 	render() {
         const { store } = this.context;
 		return (
-            <input type="text" value={store.getState()} readOnly />
+            <input type="text" value={store.getState().display} readOnly />
 		);
 	}
 }

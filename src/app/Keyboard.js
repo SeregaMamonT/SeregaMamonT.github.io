@@ -44,13 +44,19 @@ Keyboard.BTN_MODEL_SEVEN = 		{ text: '7', action: { type: 'DIGIT', value: 7 } };
 Keyboard.BTN_MODEL_EIGHT = 		{ text: '8', action: { type: 'DIGIT', value: 8 } };
 Keyboard.BTN_MODEL_NINE = 		{ text: '9', action: { type: 'DIGIT', value: 9 } };
 Keyboard.BTN_MODEL_DECIMAL = 	{ text: ',', action: { type: 'DECIMAL' } };
+Keyboard.BTN_MODEL_SUM = 		{ text: '+', action: { type: 'OPERATION', value: '+' } };
+Keyboard.BTN_MODEL_SUB = 		{ text: '-', action: { type: 'OPERATION', value: '-' } };
+Keyboard.BTN_MODEL_DIV = 		{ text: '/', action: { type: 'OPERATION', value: '/' } };
+Keyboard.BTN_MODEL_MULT = 		{ text: '*', action: { type: 'OPERATION', value: '*' } };
+Keyboard.BTN_MODEL_RESULT = 	{ text: '=', action: { type: 'OPERATION', value: '=' } };
+
 Keyboard.BTN_MODEL_NONE = 		{ text: '' };
 
 Keyboard.BUTTON_LAYOUT = [
-		[ Keyboard.BTN_MODEL_ONE, Keyboard.BTN_MODEL_TWO, Keyboard.BTN_MODEL_THREE ],
-		[ Keyboard.BTN_MODEL_FOUR, Keyboard.BTN_MODEL_FIVE, Keyboard.BTN_MODEL_SIX ],
-		[ Keyboard.BTN_MODEL_SEVEN,	Keyboard.BTN_MODEL_EIGHT, Keyboard.BTN_MODEL_NINE ],
-		[ Keyboard.BTN_MODEL_NONE, Keyboard.BTN_MODEL_ZERO,	Keyboard.BTN_MODEL_DECIMAL ]
+		[ Keyboard.BTN_MODEL_ONE, Keyboard.BTN_MODEL_TWO, Keyboard.BTN_MODEL_THREE, Keyboard.BTN_MODEL_SUM ],
+		[ Keyboard.BTN_MODEL_FOUR, Keyboard.BTN_MODEL_FIVE, Keyboard.BTN_MODEL_SIX, Keyboard.BTN_MODEL_SUB  ],
+		[ Keyboard.BTN_MODEL_SEVEN,	Keyboard.BTN_MODEL_EIGHT, Keyboard.BTN_MODEL_NINE, Keyboard.BTN_MODEL_MULT  ],
+		[ Keyboard.BTN_MODEL_DECIMAL, Keyboard.BTN_MODEL_ZERO,	Keyboard.BTN_MODEL_RESULT, Keyboard.BTN_MODEL_DIV  ]
 	];
 
 export default Keyboard;
