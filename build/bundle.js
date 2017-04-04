@@ -61,37 +61,23 @@
 	
 	var _reactRedux = __webpack_require__(/*! react-redux */ 199);
 	
-	var _App = __webpack_require__(/*! ./App */ 216);
+	var _reducers = __webpack_require__(/*! ./reducers */ 235);
+	
+	var _reducers2 = _interopRequireDefault(_reducers);
+	
+	var _App = __webpack_require__(/*! ./App */ 236);
 	
 	var _App2 = _interopRequireDefault(_App);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function reducer() {
-		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-		var action = arguments[1];
+	var store = (0, _redux.createStore)(_reducers2.default);
 	
-		switch (action.type) {
-			case 'DIGIT':
-				return state + action.value;
-			default:
-				return state;
-		}
-	}
-	
-	var store = (0, _redux.createStore)(reducer);
-	
-	function render() {
-		_reactDom2.default.render(_react2.default.createElement(
-			_reactRedux.Provider,
-			{ store: store },
-			_react2.default.createElement(_App2.default, null)
-		), document.getElementById('app'));
-	}
-	
-	store.subscribe(render);
-	
-	render();
+	_reactDom2.default.render(_react2.default.createElement(
+	    _reactRedux.Provider,
+	    { store: store },
+	    _react2.default.createElement(_App2.default, null)
+	), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -24429,7 +24415,52 @@
 	}
 
 /***/ },
-/* 216 */
+/* 216 */,
+/* 217 */,
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */,
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */,
+/* 228 */,
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */,
+/* 235 */
+/*!*****************************!*\
+  !*** ./src/app/reducers.js ***!
+  \*****************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	function reducer() {
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+	    var action = arguments[1];
+	
+	    switch (action.type) {
+	        case 'DIGIT':
+	            return state + action.value;
+	        default:
+	            return state;
+	    }
+	}
+	
+	exports.default = reducer;
+
+/***/ },
+/* 236 */
 /*!************************!*\
   !*** ./src/app/App.js ***!
   \************************/
@@ -24447,11 +24478,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Display = __webpack_require__(/*! ./Display */ 217);
+	var _Display = __webpack_require__(/*! ./Display */ 237);
 	
 	var _Display2 = _interopRequireDefault(_Display);
 	
-	var _Keyboard = __webpack_require__(/*! ./Keyboard */ 218);
+	var _Keyboard = __webpack_require__(/*! ./Keyboard */ 238);
 	
 	var _Keyboard2 = _interopRequireDefault(_Keyboard);
 	
@@ -24490,7 +24521,7 @@
 	exports.default = App;
 
 /***/ },
-/* 217 */
+/* 237 */
 /*!****************************!*\
   !*** ./src/app/Display.js ***!
   \****************************/
@@ -24560,7 +24591,7 @@
 	exports.default = Display;
 
 /***/ },
-/* 218 */
+/* 238 */
 /*!*****************************!*\
   !*** ./src/app/Keyboard.js ***!
   \*****************************/
@@ -24578,7 +24609,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Button = __webpack_require__(/*! ./Button */ 219);
+	var _Button = __webpack_require__(/*! ./Button */ 239);
 	
 	var _Button2 = _interopRequireDefault(_Button);
 	
@@ -24663,7 +24694,7 @@
 	exports.default = Keyboard;
 
 /***/ },
-/* 219 */
+/* 239 */
 /*!***************************!*\
   !*** ./src/app/Button.js ***!
   \***************************/
@@ -24689,6 +24720,11 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	var buttonStyle = {
+		width: '40px',
+		height: '25px'
+	};
+	
 	var Button = function (_React$Component) {
 		_inherits(Button, _React$Component);
 	
@@ -24701,11 +24737,14 @@
 		_createClass(Button, [{
 			key: 'render',
 			value: function render() {
+				var _props = this.props,
+				    action = _props.action,
+				    text = _props.text;
+	
 				return _react2.default.createElement(
 					'button',
-					{ style: { width: '40px', height: '25px' },
-						onClick: this.props.action },
-					this.props.text
+					{ style: buttonStyle, onClick: action },
+					text
 				);
 			}
 		}]);

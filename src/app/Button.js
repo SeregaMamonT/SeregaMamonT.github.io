@@ -1,12 +1,17 @@
 import React from 'react';
 
+const buttonStyle = {
+	width: '40px',
+	height: '25px'
+};
+
 class Button extends React.Component {
 
 	render() {
+		const { action, text } = this.props;
 		return (
-			<button style={{ width: '40px', height: '25px' }}
-					onClick={ this.props.action }>
-				{this.props.text}
+			<button style={buttonStyle}	onClick={action}>
+				{text}
 			</button>
 		);
 	}

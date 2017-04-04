@@ -3,27 +3,15 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
-import App from './App';
+import reducer from './reducers'
 
-function reducer(state = '', action) {
-	switch (action.type) {
-		case 'DIGIT':
-			return state + action.value;
-		default:
-		 return state;
-	}
-}
+import App from './App';
 
 const store = createStore(reducer);
 
-function render() {
-	ReactDOM.render(
-		<Provider store={store}>
-			<App/>
-		</Provider>,
-		document.getElementById('app'));
-}
-
-store.subscribe(render);
-
-render();
+ReactDOM.render(
+    <Provider store={store}>
+        <App/>
+    </Provider>,
+    document.getElementById('app')
+);
