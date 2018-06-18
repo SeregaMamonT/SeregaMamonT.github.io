@@ -16,9 +16,9 @@ class Keyboard extends React.Component {
 			<table>
 				<tbody>
 					{
-						Keyboard.BUTTON_LAYOUT.map(buttonRow => (
-							<tr>
-								{ buttonRow.map(buttonModel => <td>{this.createButton(buttonModel)}</td>) }
+						Keyboard.BUTTON_LAYOUT.map((buttonRow, index) => (
+							<tr key={index}>
+								{ buttonRow.map((buttonModel, index) => <td key={index}>{this.createButton(buttonModel)}</td>) }
 							</tr>
 						))
 					}
